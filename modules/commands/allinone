@@ -1,0 +1,53 @@
+module.exports.config = {
+  name: "allinone",
+  version: "1.0.1",
+  hasPermssion: 0,
+  credits: "nvh",
+  description: "Phản hồi video từ keyword",
+  commandCategory: "Khác",
+  usages: "",
+  cooldowns: 5,
+  usePrefix: true,
+};
+
+module.exports.handleEvent = async function ({ api, event }) {
+  const { body, threadID, messageID } = event;
+  if (!body) return;
+
+  const key = body.toLowerCase().trim();
+
+  // Kiểm tra từ khóa và gửi video tương ứng
+  try {
+    let attachment = null;
+
+    if (key === "anime" && typeof vdanime !== "undefined")
+      attachment = vdanime.splice(0, 1);
+    else if (key === "cos" && typeof vdcos !== "undefined")
+      attachment = vdcos.splice(0, 1);
+    else if (key === "gái" && typeof vdgai !== "undefined")
+      attachment = vdgai.splice(0, 1);
+    else if (key === "trai" && typeof vdtrai !== "undefined")
+      attachment = vdtrai.splice(0, 1);
+    else if (key === "chill" && typeof vdchill !== "undefined")
+      attachment = vdchill.splice(0, 1);
+    else if (key === "nhac" && typeof vdnhac !== "undefined")
+      attachment = vdnhac.splice(0, 1);
+    else if (key === "sad" && typeof vdsad !== "undefined")
+      attachment = vdsad.splice(0, 1);
+    else return;
+
+    if (!attachment || attachment.length === 0)
+      return api.sendMessage("⚠️ Không còn video để gửi!", threadID, messageID);
+
+    await api.sendMessage({
+      body: `🎬 Video ${key} của bé đây 💢`,
+      attachment
+    }, threadID, messageID);
+
+  } catch (err) {
+    console.error("Lỗi gửi video:", err);
+    api.sendMessage("❌ Gửi video thất bại.", threadID, messageID);
+  }
+};
+
+module.exports.run = () => {};
