@@ -378,16 +378,41 @@ module.exports = function({
 
         // --- reply khi người dùng chỉ gõ đúng prefix ---
         if (event.body && event.body.trim() === global.config.PREFIX) {
-            const replies = [
-                "Hii 🧸💗",
-                "Nèee, bot cute xuất hiện ✨",
-                "Ủa gọi tui đó hảa~ 🐻",
-                "Xin chào cục cưng đáng iu 💞",
-                "Chào cậu, hôm nay ổn hong 🥺"
-            ];
-            const reply = replies[Math.floor(Math.random() * replies.length)];
-            return api.sendMessage(reply, event.threadID, event.messageID);
-        }
+  const banner = String.raw`
+✨░▒▓ 𝐓𝐢𝐩𝐲𝐆-𝐁𝐎𝐓 ▓▒░✨
+
+██████╗░
+██╔══██╗
+██████╦╝
+██╔══██╗
+██████╦╝
+╚═════╝░
+
+░█████╗░
+██╔══██╗
+██║░░██║
+██║░░██║
+╚█████╔╝
+░╚════╝░
+
+████████╗
+╚══██╔══╝
+░░░██║░░░
+░░░██║░░░
+░░░██║░░░
+░░░╚═╝░░░ `;
+
+  const replyList = [
+    "꧁♡︎𝐕𝐮𝐢 𝐥𝐨̀𝐧𝐠 𝐧𝐡𝐚̣̂𝐩 /𝐦𝐞𝐧𝐮 𝐚𝐥𝐥 đ𝐞̂̉ 𝐬𝐮̛̉ 𝐝𝐮̣𝐧𝐠 𝐧𝐡𝐞́♡︎꧂",
+    "꧁♡︎𝐕𝐮𝐢 𝐥𝐨̀𝐧𝐠 𝐧𝐡𝐚̣̂𝐩 /𝐦𝐞𝐧𝐮 𝐚𝐥𝐥 đ𝐞̂̉ 𝐬𝐮̛̉ 𝐝𝐮̣𝐧𝐠 𝐧𝐡𝐞́♡︎꧂"
+    
+  ];
+
+  const randomText = replyList[Math.floor(Math.random() * replyList.length)];
+  
+  return api.sendMessage("```" + banner + "```\n" + randomText, event.threadID, event.messageID);
+}
+
 
         // Event Type Switch
         switch (event.type) {

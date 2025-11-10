@@ -2,7 +2,7 @@
 module.exports.config = {
   name: "addmoney",
   version: "1.1.0",
-  hasPermssion: 2,       // chỉ admin
+  hasPermssion: 1,       // chỉ admin
   credits: "Trung x GPT",
   description: "Cộng/Trừ tiền cho user dùng Currencies",
   commandCategory: "Bank",

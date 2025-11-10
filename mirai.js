@@ -73,6 +73,11 @@ global.data = new Object({
 
 global.utils = require("./utils");
 global.nodemodule = new Object();
+
+// ✅ THÊM NGAY DƯỚI ĐÂY
+global.nodemodule = global.nodemodule || {};
+global.nodemodule['semver'] = require('semver');
+
 global.config = new Object();
 global.configModule = new Object();
 global.moduleData = new Array();
